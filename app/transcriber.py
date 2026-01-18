@@ -45,10 +45,10 @@ class AudioTranscriber:
                 file_path,
                 beam_size=Config.BEAM_SIZE,
                 language="ru",
-                vad_filter=True,
+                vad_filter=Config.VAD_FILTER,
                 temperature=0.0,
                 initial_prompt=Config.INITIAL_PROMPT or None,
-                no_speech_threshold=0.5,
+                no_speech_threshold=Config.NO_SPEECH_THRESHOLD,
                 without_timestamps=Config.WITHOUT_TIMESTAMPS,
                 condition_on_previous_text=Config.CONDITION_ON_PREVIOUS_TEXT
             )

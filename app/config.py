@@ -31,6 +31,8 @@ class Config:
     BEAM_SIZE = int(os.getenv("BEAM_SIZE", "2"))
     WITHOUT_TIMESTAMPS = os.getenv("WITHOUT_TIMESTAMPS", "true").lower() == "true"
     CONDITION_ON_PREVIOUS_TEXT = os.getenv("CONDITION_ON_PREVIOUS_TEXT", "false").lower() == "true"
+    VAD_FILTER = os.getenv("VAD_FILTER", "true").lower() == "true"
+    NO_SPEECH_THRESHOLD = float(os.getenv("NO_SPEECH_THRESHOLD", "0.5"))
     
     if not BOT_TOKEN:
         raise ValueError("BOT_TOKEN is not set in environment variables")
