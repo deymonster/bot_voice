@@ -33,6 +33,7 @@ class Config:
     CONDITION_ON_PREVIOUS_TEXT = os.getenv("CONDITION_ON_PREVIOUS_TEXT", "false").lower() == "true"
     VAD_FILTER = os.getenv("VAD_FILTER", "true").lower() == "true"
     NO_SPEECH_THRESHOLD = float(os.getenv("NO_SPEECH_THRESHOLD", "0.5"))
+    START_COMMAND_ENABLED = os.getenv("START_COMMAND_ENABLED", "false").lower() == "true"
     
     if not BOT_TOKEN:
         raise ValueError("BOT_TOKEN is not set in environment variables")

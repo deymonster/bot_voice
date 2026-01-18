@@ -92,6 +92,8 @@ def split_text(text: str, limit: int = 4000) -> list[str]:
 
 @dp.message(CommandStart())
 async def command_start_handler(message: types.Message):
+    if not Config.START_COMMAND_ENABLED:
+        return
     # Helpful log to find Group ID
     logger.info(f"👋 Received /start from Chat ID: {message.chat.id} | Type: {message.chat.type} | User: {message.from_user.full_name}")
 
