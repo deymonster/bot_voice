@@ -144,7 +144,7 @@ async def handle_voice(message: types.Message):
     file_path = f"downloads/{file_unique_id}.{extension}"
 
     try:
-        pending = await message.reply("⏳ Пожалуйста, подождите, идёт распознавание...")
+        pending = await message.reply(f"⏳ От <b>{user_name}</b>: идёт распознавание...", parse_mode="HTML")
 
         file = await bot.get_file(file_id)
         await bot.download_file(file.file_path, file_path)
@@ -158,7 +158,7 @@ async def handle_voice(message: types.Message):
 
         edited_first = False
         if chunks:
-            header = f"🗣 <b>{user_name}:</b>\n"
+            header = f"От <b>{user_name}</b>: "
             try:
                 await pending.edit_text(f"{header}{chunks[0]}", parse_mode="HTML")
                 edited_first = True
@@ -167,7 +167,7 @@ async def handle_voice(message: types.Message):
 
         start_index = 1 if edited_first else 0
         for i in range(start_index, len(chunks)):
-            await message.reply(chunks[i], parse_mode="HTML")
+            await message.reply(f"{header}{chunks[i]}", parse_mode="HTML")
 
     except Exception as e:
         logger.error(f"Error processing message from {user_name}: {e}")
